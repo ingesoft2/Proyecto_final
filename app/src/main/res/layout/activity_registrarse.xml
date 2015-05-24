@@ -1,0 +1,69 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.mateobadillo.ingesoft.Registrarse">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Contraseña"
+        android:id="@+id/LcrearContraseña"
+        android:layout_above="@+id/BcrearUsuario"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="44dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registrarse"
+        android:id="@+id/BcrearUsuario"
+        android:layout_marginBottom="221dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Usuario"
+        android:id="@+id/LcrearUsuario"
+        android:layout_marginBottom="26dp"
+        android:layout_above="@+id/LcrearContraseña"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TcrearUsuario"
+        android:layout_alignBottom="@+id/LcrearUsuario"
+        android:layout_alignLeft="@+id/TcrearContraseña"
+        android:layout_alignStart="@+id/TcrearContraseña"
+        android:layout_alignRight="@+id/TcrearContraseña"
+        android:layout_alignEnd="@+id/TcrearContraseña" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/TcrearContraseña"
+        android:layout_alignBottom="@+id/LcrearContraseña"
+        android:layout_alignLeft="@+id/BcrearUsuario"
+        android:layout_alignStart="@+id/BcrearUsuario" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Atras"
+        android:id="@+id/BregistroAtras"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/LcrearContraseña"
+        android:layout_alignEnd="@+id/LcrearContraseña" />
+
+</RelativeLayout>
