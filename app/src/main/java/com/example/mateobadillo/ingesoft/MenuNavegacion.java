@@ -13,6 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 
+import com.example.mateobadillo.ingesoft.objetoperdidoendpoint.Eliminar_Fragment;
+import com.example.mateobadillo.ingesoft.objetoperdidoendpoint.RegistrarObjeto_Fragment;
+
 
 public class MenuNavegacion extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -26,6 +29,9 @@ public class MenuNavegacion extends ActionBarActivity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
+    private String usuario;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +46,10 @@ public class MenuNavegacion extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+        Bundle b = getIntent().getExtras();
+        usuario = b.getString("key");
+
     }
 
     @Override
@@ -56,12 +66,18 @@ public class MenuNavegacion extends ActionBarActivity
                 break;
             case 1:
 
-                objFragment = new Registrar_Fragment();
+                objFragment = new RegistrarObjeto_Fragment();
+                Bundle a = new Bundle();
+                a.putString("key", usuario); //Your id
+                objFragment.setArguments(a);
 
                 break;
             case 2:
 
                 objFragment = new Eliminar_Fragment();
+                Bundle b = new Bundle();
+                b.putString("key", usuario); //Your id
+                objFragment.setArguments(b);
 
                 break;
         }

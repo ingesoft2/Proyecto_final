@@ -1,25 +1,34 @@
 package com.example.mateobadillo.ingesoft;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+
+import com.example.mateobadillo.ingesoft.registraruendpoint.RegistrarseActivity;
 
 
 public class Log extends ActionBarActivity implements View.OnClickListener {
 
     private Button Blogin, Bregistro;
+    private EditText TUsuario, TContraseña;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log);
 
+
         Blogin = (Button)findViewById(R.id.Blogin);
         Bregistro = (Button)findViewById(R.id.Bregistrarse);
+
+        TUsuario = (EditText)findViewById(R.id.Tusuario);
+        TContraseña = (EditText)findViewById(R.id.Tcontraseña);
 
         listener();
 
@@ -59,13 +68,18 @@ public class Log extends ActionBarActivity implements View.OnClickListener {
     {
         if(Blogin.isPressed())
         {
-            startActivity(new Intent(this, MenuNavegacion.class));
+            Intent intent = (new Intent(this, MenuNavegacion.class));
+            Bundle b = new Bundle();
+            String usuario = this.TUsuario.getText().toString();
+            b.putString("key", usuario); //Your id
+            intent.putExtras(b);
+            startActivity(intent);
             finish();
         }
 
         if(Bregistro.isPressed())
         {
-            startActivity(new Intent(this, Registrarse.class));
+            startActivity(new Intent(this, RegistrarseActivity.class));
             finish();
         }
 
