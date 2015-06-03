@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 public class Log extends ActionBarActivity implements View.OnClickListener {
@@ -57,10 +58,20 @@ public class Log extends ActionBarActivity implements View.OnClickListener {
     @Override
     public void onClick(View v)
     {
+        Boolean correcto=false;
+
+
         if(Blogin.isPressed())
         {
-            startActivity(new Intent(this, MenuNavegacion.class));
-            finish();
+            if(correcto==true)
+            {
+                startActivity(new Intent(this, MenuNavegacion.class));
+                finish();
+            }
+            else
+            {
+                Toast.makeText(this, "Usuario o contrasena incorrecta", Toast.LENGTH_SHORT).show();
+            }
         }
 
         if(Bregistro.isPressed())

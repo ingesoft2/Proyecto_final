@@ -14,13 +14,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import com.mycompany.services.listaroendpoint;
+import listaroendpoint.listaroendpointgs.com.mycompany.services.listaroendpoint.*;
+import listaroendpoint.listaroendpointgs.com.mycompany.services.listaroendpoint.model.*;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.json.gson.GsonFactory;
@@ -38,6 +43,10 @@ public class Buscar extends android.support.v4.app.Fragment {
     public String categoria;
     Spinner spinnerLugar;
     Spinner spinnerCategoria;
+    ListView listaresul;
+
+    private ArrayList<Map<String,String>> list = null;
+    private SimpleAdapter adapter = null;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -48,6 +57,7 @@ public class Buscar extends android.support.v4.app.Fragment {
         this.llenarspinner2();
 
         Bbuscar = (Button) rootview.findViewById(R.id.bfind);
+        listaresul = (ListView) rootview.findViewById(R.id.listaResultado);
 
         Bbuscar.setOnClickListener(new View.OnClickListener()
         {
@@ -71,6 +81,7 @@ public class Buscar extends android.support.v4.app.Fragment {
                 {
                     String[] params = {lugar,categoria};
                     new BuscarAsyncTask(rootview.getContext()).execute(params);
+                    this.llenarlista();
                 }
                 else
                 {
@@ -106,7 +117,7 @@ public class Buscar extends android.support.v4.app.Fragment {
         }
 
         protected ListarO doInBackground(String... params) {
-            ListarO response = null;
+            CollectionResponseListarO response = null;
             try {
                 Listaroendpoint.Builder builder = new Listaroendpoint.Builder(AndroidHttp.newCompatibleTransport(), new GsonFactory(), null);
                 Listaroendpoint service =  builder.build();
@@ -120,7 +131,7 @@ public class Buscar extends android.support.v4.app.Fragment {
             return response;
         }
 
-        protected void onPostExecute(ListarO quote) {
+        protected void onPostExecute(CollectionResponseListarO quotes) {
             //Clear the progress dialog and the fields
             pd.dismiss();
             //editMessage.setText("");
@@ -128,7 +139,25 @@ public class Buscar extends android.support.v4.app.Fragment {
 
             //Display success message to user
             Toast.makeText(rootview.getContext(), "La busqueda es", Toast.LENGTH_SHORT).show();
+
+            ArrayList<Map<String, String>> list = new ArrayList<Map<String, String>>();
+            List<ListarO> _list = quotes.getItems();
+            for (ListarO quote : _list) {
+                HashMap<String, String> item = new HashMap<String, String>();
+                item.put("ID", String.valueOf(quote.getId()));
+                item.put("Lugar", quote.getLugar());
+                list.add(item);
+            }
+            adapter = new SimpleAdapter(QuotesListActivity.this, list,android.R.layout.simple_list_item_2, from, to);
+            setListAdapter(adapter);
+
         }
+    }
+
+    public void llenarlista()
+    {
+
+
     }
 
 
