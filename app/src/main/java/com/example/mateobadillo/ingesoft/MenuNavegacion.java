@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.widget.Toast;
 
 
 public class MenuNavegacion extends ActionBarActivity
@@ -64,6 +65,9 @@ public class MenuNavegacion extends ActionBarActivity
                 objFragment = new Eliminar_Fragment();
 
                 break;
+            case 3:
+                objFragment = new Buscar();
+            break;
         }
 
         // update the main content by replacing fragments
@@ -83,6 +87,9 @@ public class MenuNavegacion extends ActionBarActivity
                 break;
             case 3:
                 mTitle = getString(R.string.title_section3);
+                break;
+            case 4:
+                mTitle = getString(R.string.title_section4);
                 break;
         }
     }

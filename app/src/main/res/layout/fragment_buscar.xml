@@ -1,0 +1,84 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="com.example.mateobadillo.ingesoft.Buscar">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <TableRow>
+
+            <TextView
+                android:layout_weight="2"
+                android:text="Buscar Objeto Perdido"
+                android:textSize="14pt"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:id="@+id/textViewbop"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="22dp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:text="@string/lugartext"
+                android:id="@+id/textView1" />
+
+            <Spinner
+                android:id="@+id/SpinnerBuscarLugar"
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:layout_weight="1"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
+
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:text="@string/categoriatext"
+                android:id="@+id/textView" />
+
+            <Spinner
+                android:id="@+id/SpinnerBuscarCategoria"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            >
+
+            <Button
+                android:id="@+id/bfind"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/find"
+                android:layout_weight="2"
+                android:onClick="Find" />
+
+
+        </TableRow>
+
+    </TableLayout>
+
+
+
+</FrameLayout>
